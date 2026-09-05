@@ -20,7 +20,12 @@
   const langBtn = document.getElementById('langBtn');
   const langLabel = document.getElementById('langLabel');
   const dict = window.CODEY_I18N || { ar: {}, en: {} };
-  let currentLang = localStorage.getItem('codey-lang') || 'ar';
+  const detectBrowserLang = () => {
+    const langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'ar'];
+    const match = langs.find((l) => /^ar/i.test(l));
+    return match ? 'ar' : 'en';
+  };
+  let currentLang = localStorage.getItem('codey-lang') || detectBrowserLang();
 
   const applyLang = (lang) => {
     currentLang = lang;
