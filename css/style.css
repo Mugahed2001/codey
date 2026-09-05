@@ -147,6 +147,8 @@ input, textarea { font-family: inherit; }
 
 .hero__inner { position: relative; z-index: 2; text-align: center; max-width: 900px; margin-inline: auto; }
 
+.hero__logo { width: min(260px, 60vw); margin: 0 auto 1.8rem; }
+
 .hero__badge {
   display: inline-flex; align-items: center; gap: .5rem;
   background: rgba(47,125,250,0.1); border: 1px solid rgba(47,125,250,0.35);
