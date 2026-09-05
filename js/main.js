@@ -1,15 +1,61 @@
 (() => {
   'use strict';
 
+  const html = document.documentElement;
+  html.classList.add('js');
+
+  /* ---------- theme (light default, dark optional) ---------- */
+  const themeBtn = document.getElementById('themeBtn');
+  const storedTheme = localStorage.getItem('codey-theme');
+  if (storedTheme) html.setAttribute('data-theme', storedTheme);
+
+  themeBtn.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('codey-theme', next);
+  });
+
+  /* ---------- language (ar default, en optional) ---------- */
+  const langBtn = document.getElementById('langBtn');
+  const langLabel = document.getElementById('langLabel');
+  const dict = window.CODEY_I18N || { ar: {}, en: {} };
+  let currentLang = localStorage.getItem('codey-lang') || 'ar';
+
+  const applyLang = (lang) => {
+    currentLang = lang;
+    const table = dict[lang] || {};
+    html.setAttribute('lang', lang);
+    html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    langLabel.textContent = lang === 'ar' ? 'EN' : 'AR';
+
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      if (table[key] !== undefined) el.textContent = table[key];
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-ph');
+      if (table[key] !== undefined) el.setAttribute('placeholder', table[key]);
+    });
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc && table['meta.desc']) metaDesc.setAttribute('content', table['meta.desc']);
+
+    localStorage.setItem('codey-lang', lang);
+    if (window.codeyRelayoutSwap) requestAnimationFrame(window.codeyRelayoutSwap);
+  };
+
+  langBtn.addEventListener('click', () => applyLang(currentLang === 'ar' ? 'en' : 'ar'));
+  applyLang(currentLang);
+
   document.getElementById('year').textContent = new Date().getFullYear();
 
   /* ---------- navbar scroll state ---------- */
   const nav = document.getElementById('nav');
+  const fab = document.getElementById('fabCta');
   const onScroll = () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
     fab.classList.toggle('show', window.scrollY > 500);
   };
-  const fab = document.getElementById('fabCta');
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
@@ -24,34 +70,27 @@
     a.addEventListener('click', () => navLinks.classList.remove('open'));
   });
 
-  /* ---------- cursor glow (desktop only) ---------- */
-  const glow = document.getElementById('cursorGlow');
-  const isTouch = matchMedia('(pointer: coarse)').matches;
-  if (!isTouch) {
-    window.addEventListener('mousemove', (e) => {
-      glow.style.left = e.clientX + 'px';
-      glow.style.top = e.clientY + 'px';
-    }, { passive: true });
-  }
-
-  /* ---------- reveal on scroll ---------- */
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        io.unobserve(entry.target);
-      }
+  /* ---------- reveal on scroll (manual rect check: more reliable than
+     IntersectionObserver across resizes/print/headless-capture) ---------- */
+  const revealEls = Array.from(document.querySelectorAll('.reveal'));
+  const checkReveals = () => {
+    const vh = window.innerHeight;
+    revealEls.forEach(el => {
+      if (el.classList.contains('in')) return;
+      const rect = el.getBoundingClientRect();
+      if (rect.top < vh - 60 && rect.bottom > 0) el.classList.add('in');
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-  revealEls.forEach(el => io.observe(el));
+  };
+  window.addEventListener('scroll', checkReveals, { passive: true });
+  window.addEventListener('resize', checkReveals);
+  window.addEventListener('load', checkReveals);
+  checkReveals();
 
   /* ---------- animated counters ---------- */
-  const counters = document.querySelectorAll('.stat__num');
   const animateCounter = (el) => {
     const target = parseInt(el.dataset.count, 10) || 0;
     const suffix = el.dataset.suffix || '';
-    const duration = 1400;
+    const duration = 1300;
     const start = performance.now();
     const step = (now) => {
       const progress = Math.min((now - start) / duration, 1);
@@ -69,34 +108,35 @@
       }
     });
   }, { threshold: 0.5 });
-  counters.forEach(c => counterIo.observe(c));
+  document.querySelectorAll('.stat-card__num').forEach(c => counterIo.observe(c));
 
-  /* ---------- hero typewriter ---------- */
-  const words = ['منتج رقمي.', 'نظام SaaS.', 'تطبيق متكامل.', 'منصّة قابلة للنمو.'];
-  const twEl = document.getElementById('typewriter');
-  let wi = 0, ci = 0, deleting = false;
+  /* ---------- hero word-swap (vertical slide, not a typewriter) ----------
+     translateY(%) is relative to the track's OWN height (all stacked words),
+     not a single word — so we measure pixel height per word instead. */
+  const swapWrap = document.querySelector('.hero__title-swap');
+  const track = document.getElementById('swapTrack');
+  let swapIdx = 0;
+  if (track && swapWrap) {
+    const items = Array.from(track.children);
+    const layoutSwap = () => {
+      const h = items[0].getBoundingClientRect().height;
+      swapWrap.style.height = h + 'px';
+      track.style.transition = 'none';
+      track.style.transform = `translateY(${-swapIdx * h}px)`;
+      void track.offsetHeight;
+      track.style.transition = '';
+    };
+    layoutSwap();
+    window.addEventListener('resize', layoutSwap);
+    window.addEventListener('load', layoutSwap);
+    window.codeyRelayoutSwap = layoutSwap;
 
-  const tick = () => {
-    const word = words[wi];
-    if (!deleting) {
-      ci++;
-      twEl.textContent = word.slice(0, ci);
-      if (ci === word.length) {
-        deleting = true;
-        setTimeout(tick, 1600);
-        return;
-      }
-    } else {
-      ci--;
-      twEl.textContent = word.slice(0, ci);
-      if (ci === 0) {
-        deleting = false;
-        wi = (wi + 1) % words.length;
-      }
-    }
-    setTimeout(tick, deleting ? 45 : 75);
-  };
-  tick();
+    setInterval(() => {
+      swapIdx = (swapIdx + 1) % items.length;
+      const h = items[0].getBoundingClientRect().height;
+      track.style.transform = `translateY(${-swapIdx * h}px)`;
+    }, 2400);
+  }
 
   /* ---------- smooth anchor scroll offset ---------- */
   document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -106,7 +146,7 @@
       const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      const offset = 80;
+      const offset = 76;
       const top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
     });
@@ -123,16 +163,17 @@
     const message = form.message.value.trim();
     if (!name || !message) return;
 
-    submitLabel.textContent = 'جارٍ الإرسال...';
+    const table = dict[currentLang] || {};
+    submitLabel.textContent = table['contact.sending'] || 'Sending...';
     setTimeout(() => {
-      const subject = encodeURIComponent('طلب مشروع من ' + name);
+      const subject = encodeURIComponent('Codey project — ' + name);
       const body = encodeURIComponent(
-        `الاسم: ${name}\nالهاتف: ${form.phone.value}\nالبريد: ${form.email.value}\n\nتفاصيل المشروع:\n${message}`
+        `Name: ${name}\nPhone: ${form.phone.value}\nEmail: ${form.email.value}\n\nDetails:\n${message}`
       );
       window.location.href = `mailto:info@codeysaa.com?subject=${subject}&body=${body}`;
-      submitLabel.textContent = 'إرسال الطلب';
-      note.textContent = 'سيُفتح تطبيق البريد لديك لإتمام الإرسال.';
+      submitLabel.textContent = table['contact.submit'] || 'Send';
+      note.textContent = table['contact.sent'] || '';
       form.reset();
-    }, 500);
+    }, 450);
   });
 })();
