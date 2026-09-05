@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>كودي للتطوير والاستشارة التقنية | بناء أنظمة SaaS</title>
+<meta name="description" content="كودي (Codey) شركة تقنية متخصصة في بناء أنظمة SaaS واستشارات التقنية وتطوير التطبيقات — من فكرة إلى منتج جاهز للسوق.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%230b1220%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 font-family=%22Arial%22 font-weight=%22900%22 fill=%22%232f7dfa%22 text-anchor=%22middle%22>C</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- ================= NAVBAR ================= -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="#top" class="brand">
+      <span class="brand__mark">
+        <svg viewBox="0 0 48 48" width="38" height="38" aria-hidden="true">
+          <circle cx="24" cy="24" r="21" fill="none" stroke="url(#g1)" stroke-width="4.5"/>
+          <path d="M31 16c-5-3-11-1-13 4s0 10 5 12" fill="none" stroke="url(#g1)" stroke-width="4.5" stroke-linecap="round"/>
+          <circle cx="36" cy="9" r="2.4" fill="#2f7dfa"/>
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="48" y2="48">
+              <stop offset="0" stop-color="#5aa6ff"/>
+              <stop offset="1" stop-color="#1a4fb4"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      <span class="brand__text">CODEY<sup>"</sup></span>
+    </a>
+
+    <nav class="nav__links" id="navLinks">
+      <a href="#services">خدماتنا</a>
+      <a href="#work">أعمالنا</a>
+      <a href="#process">آلية العمل</a>
+      <a href="#stack">التقنيات</a>
+      <a href="#about">من نحن</a>
+      <a href="#contact" class="nav__cta">ابدأ مشروعك</a>
+    </nav>
+
+    <button class="nav__burger" id="burger" aria-label="فتح القائمة">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero__bg">
+      <div class="orb orb--1"></div>
+      <div class="orb orb--2"></div>
+      <div class="grid-lines"></div>
+    </div>
+
+    <div class="container hero__inner">
+      <div class="hero__badge reveal">
+        <span class="dot"></span> نبني أنظمة SaaS من الفكرة إلى الإطلاق
+      </div>
+
+      <h1 class="hero__title reveal">
+        نحوّل <span class="grad-text">فكرتك</span> إلى
+        <span class="typewriter" id="typewriter"></span>
+      </h1>
+
+      <p class="hero__desc reveal">
+        كودي شركة تقنية متخصصة في التطوير والاستشارة التقنية، نصمّم ونبني
+        أنظمة SaaS وتطبيقات ويب وموبايل متكاملة — بنية قوية، تجربة استخدام
+        أنيقة، وجاهزية حقيقية للنمو.
+      </p>
+
+      <div class="hero__actions reveal">
+        <a href="#contact" class="btn btn--primary">
+          <span>ناقش مشروعك معنا</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#work" class="btn btn--ghost">شاهد أعمالنا</a>
+      </div>
+
+      <div class="hero__stats reveal">
+        <div class="stat">
+          <span class="stat__num" data-count="3">0</span>
+          <span class="stat__label">أنظمة SaaS مُطلقة</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num" data-count="3">0</span>
+          <span class="stat__label">أدوار مستخدمين متعددة</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num" data-count="100" data-suffix="%">0</span>
+          <span class="stat__label">بنية Supabase RLS آمنة</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num" data-count="2">0</span>
+          <span class="stat__label">منصّات: Android &amp; iOS &amp; Web</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll">
+      <span>مرر للأسفل</span>
+      <div class="scroll-line"><div class="scroll-dot"></div></div>
+    </div>
+  </section>
+
+  <!-- ================= LOGOS STRIP ================= -->
+  <section class="strip">
+    <div class="container strip__inner">
+      <p class="strip__label">التقنيات التي نثق بها</p>
+      <div class="strip__marquee">
+        <div class="strip__track">
+          <span>Flutter</span><span>Supabase</span><span>PostgreSQL</span><span>Edge Functions</span>
+          <span>Row Level Security</span><span>TypeScript</span><span>REST APIs</span><span>Render</span>
+          <span>Flutter</span><span>Supabase</span><span>PostgreSQL</span><span>Edge Functions</span>
+          <span>Row Level Security</span><span>TypeScript</span><span>REST APIs</span><span>Render</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow">خدماتنا</span>
+        <h2>كل ما تحتاجه لبناء منتجك التقني</h2>
+        <p>من الاستشارة وتصميم البنية، إلى التطوير الكامل والدعم بعد الإطلاق.</p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7l-9-5Z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>بناء أنظمة SaaS</h3>
+          <p>تصميم وبناء منصات متعددة المستأجرين (Multi-tenant) بأدوار وصلاحيات دقيقة، جاهزة للتوسع منذ اليوم الأول.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M9 18h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3>تطبيقات موبايل وويب</h3>
+          <p>تطوير تطبيقات Flutter لأندرويد وiOS وويب بقاعدة كود واحدة، بأداء عالٍ وتجربة استخدام سلسة.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h10M4 17h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <h3>الاستشارة التقنية</h3>
+          <p>تقييم الأفكار، اختيار البنية التقنية الأنسب، ومراجعة الأمان والأداء قبل وأثناء التطوير.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="1.6"/><path d="M19.4 13a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V19a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H5a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H11a1.6 1.6 0 0 0 1-1.5V5a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V11c.1.7.6 1.3 1.5 1.4h.1a2 2 0 1 1 0 4H19.4a1.6 1.6 0 0 0-1 1z" stroke="currentColor" stroke-width="1.2"/></svg>
+          </div>
+          <h3>البنية الخلفية والأمان</h3>
+          <p>قواعد بيانات Postgres مع سياسات RLS، ودوال Edge محكمة، بلا كشف لمفاتيح حساسة داخل التطبيق.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l3 8 4-16 3 8h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>لوحات تحكم وتقارير</h3>
+          <p>لوحات إدارة وإحصاءات مباشرة تمنح فريقك رؤية كاملة على العمليات والأداء لحظة بلحظة.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3>الصيانة والدعم المستمر</h3>
+          <p>متابعة ما بعد الإطلاق: تحديثات، مراقبة الأخطاء، وتطوير مزايا جديدة بحسب نمو مشروعك.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORK / PORTFOLIO ================= -->
+  <section class="section section--dark" id="work">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow eyebrow--light">من أعمالنا</span>
+        <h2 class="light">أنظمة بنيناها من الصفر</h2>
+        <p class="light-muted">ثلاثة منتجات حقيقية، بثلاث بنى مختلفة، وهدف واحد: حل مشكلة فعلية بجودة عالية.</p>
+      </div>
+
+      <div class="work-grid">
+
+        <article class="work-card reveal">
+          <div class="work-card__top">
+            <img src="assets/img/apps/sndk-icon.png" alt="أيقونة تطبيق سندك الطبي" class="work-card__icon">
+            <div class="work-card__tags">
+              <span>Flutter</span><span>Supabase</span><span>موقع مرافق</span>
+            </div>
+          </div>
+          <h3>تطبيق سندك الطبي</h3>
+          <p>دليل معلوماتي ذكي للأطباء والمرافق الصحية الخاصة، يتيح البحث بالاسم والتخصص والمنطقة، مع نظام حجز مواعيد ومخيمات طبية ومشاركة روابط مباشرة للمرافق والمواعيد.</p>
+          <ul class="work-card__points">
+            <li>بحث متقدم حسب التخصص والمنطقة</li>
+            <li>حجز مواعيد ومخيمات طبية بروابط مشاركة مباشرة</li>
+            <li>موقع ويب مرتبط بنفس قاعدة بيانات التطبيق دون ازدواجية</li>
+          </ul>
+          <a class="work-card__link" href="https://snadk.codeysaa.com" target="_blank" rel="noopener">
+            زيارة الموقع
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <article class="work-card reveal">
+          <div class="work-card__top">
+            <img src="assets/img/apps/aliyan-icon.png" alt="أيقونة نظام عليان" class="work-card__icon">
+            <div class="work-card__tags">
+              <span>Flutter</span><span>نتائج مباشرة</span><span>إدارة بطولات</span>
+            </div>
+          </div>
+          <h3>نظام عليان</h3>
+          <p>منصة متكاملة لإدارة بطولات ألعاب القوى من التسجيل حتى النتائج الرسمية، تخدم الاتحادات والأندية واللجان والحكّام، مع عرض مباشر للنتائج والترتيب للجمهور دون تسجيل دخول.</p>
+          <ul class="work-card__points">
+            <li>تسجيل الرياضيين والأندية وجدولة الفعاليات والأشواط</li>
+            <li>إدخال النتائج واعتمادها وحساب الترتيب والميداليات</li>
+            <li>تقارير رسمية وفق معايير الاتحاد الدولي لألعاب القوى</li>
+          </ul>
+        </article>
+
+        <article class="work-card reveal">
+          <div class="work-card__top">
+            <img src="assets/img/apps/albelad-icon.png" alt="أيقونة تطبيق للبلاد" class="work-card__icon">
+            <div class="work-card__tags">
+              <span>Flutter</span><span>Multi-role</span><span>نقل محلي</span>
+            </div>
+          </div>
+          <h3>تطبيق للبلاد</h3>
+          <p>تطبيق واحد بثلاثة أدوار (مسافر، سائق، إدارة) لتنظيم حركة النقل المحلي بين المناطق — مجاني بالكامل للمسافر، مع لوحات اشتراك وإدارة مخصصة للسائقين والإدارة.</p>
+          <ul class="work-card__points">
+            <li>بحث المسافر عن الرحلات وتواصل مباشر مع السائق</li>
+            <li>لوحة سائق لإدارة الرحلات والاشتراكات</li>
+            <li>لوحة إدارة لاعتماد السائقين والمناطق والباقات</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROCESS ================= -->
+  <section class="section" id="process">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow">آلية العمل</span>
+        <h2>من الفكرة إلى الإطلاق في أربع خطوات</h2>
+      </div>
+
+      <div class="process">
+        <div class="process__line"></div>
+
+        <div class="process__step reveal">
+          <span class="process__num">01</span>
+          <h3>الاكتشاف والاستشارة</h3>
+          <p>نفهم مشكلتك الحقيقية، ونحدد الأدوار والصلاحيات ونموذج العمل قبل كتابة أي سطر كود.</p>
+        </div>
+
+        <div class="process__step reveal">
+          <span class="process__num">02</span>
+          <h3>تصميم البنية</h3>
+          <p>نصمم قاعدة البيانات والصلاحيات (RLS) وواجهة النظام بما يتحمل النمو من اليوم الأول.</p>
+        </div>
+
+        <div class="process__step reveal">
+          <span class="process__num">03</span>
+          <h3>التطوير التكراري</h3>
+          <p>نبني بمراحل قابلة للاختبار، مع مراجعات دورية معك لضبط الاتجاه أولاً بأول.</p>
+        </div>
+
+        <div class="process__step reveal">
+          <span class="process__num">04</span>
+          <h3>الإطلاق والدعم</h3>
+          <p>ننشر النظام، ونبقى بجانبك للمتابعة والتطوير المستمر بعد الإطلاق.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STACK ================= -->
+  <section class="section section--dark" id="stack">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow eyebrow--light">التقنيات</span>
+        <h2 class="light">أدوات موثوقة لبناء منتج جاهز للسوق</h2>
+      </div>
+
+      <div class="stack-grid">
+        <div class="stack-card reveal">
+          <h4>Flutter</h4>
+          <p>قاعدة كود واحدة لأندرويد وiOS والويب، بأداء أصلي وتجربة موحّدة.</p>
+        </div>
+        <div class="stack-card reveal">
+          <h4>Supabase</h4>
+          <p>قاعدة بيانات Postgres، مصادقة، وتخزين، ودوال Edge — بنية خلفية كاملة وآمنة.</p>
+        </div>
+        <div class="stack-card reveal">
+          <h4>Row Level Security</h4>
+          <p>حماية البيانات على مستوى الصف، بلا اعتماد على مفاتيح سرّية داخل التطبيق.</p>
+        </div>
+        <div class="stack-card reveal">
+          <h4>TypeScript</h4>
+          <p>دوال حافة وواجهات برمجية مكتوبة بدقة وقابلة للصيانة على المدى الطويل.</p>
+        </div>
+        <div class="stack-card reveal">
+          <h4>PostgreSQL</h4>
+          <p>مخططات علائقية محكمة تدعم منطق الأعمال المعقّد دون تعقيد الواجهة.</p>
+        </div>
+        <div class="stack-card reveal">
+          <h4>Render / Static Hosting</h4>
+          <p>نشر مواقع وخدمات مساندة سريعة وموثوقة بأقل تكلفة تشغيل.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT / WHY US ================= -->
+  <section class="section" id="about">
+    <div class="container about">
+      <div class="about__text reveal">
+        <span class="eyebrow">من نحن</span>
+        <h2>كودي: تقنية، تطوير، استشارة</h2>
+        <p>
+          كودي شركة تقنية متخصصة في بناء أنظمة SaaS من الفكرة إلى الإطلاق.
+          لا نكتفي بكتابة الكود — نصمّم البنية، نضبط الصلاحيات والأمان، ونهتم
+          بتجربة كل نوع من المستخدمين داخل النظام: من المدير إلى المستخدم
+          النهائي.
+        </p>
+        <p>
+          نؤمن أن المنتج التقني الجيد هو الذي يبقى بسيطًا من الخارج، ومحكمًا
+          من الداخل. هذا ما نطبّقه في كل نظام نبنيه.
+        </p>
+        <div class="about__list">
+          <div class="about__item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            بنية Multi-tenant وأدوار صلاحيات دقيقة
+          </div>
+          <div class="about__item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            أمان بيانات حقيقي عبر سياسات RLS
+          </div>
+          <div class="about__item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            تطبيقات موحّدة لأندرويد وiOS والويب
+          </div>
+          <div class="about__item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            متابعة ودعم بعد الإطلاق لا يتوقف عند التسليم
+          </div>
+        </div>
+      </div>
+
+      <div class="about__visual reveal">
+        <div class="code-window">
+          <div class="code-window__bar">
+            <span></span><span></span><span></span>
+            <p>codey_system.dart</p>
+          </div>
+          <pre class="code-window__body"><code><span class="c-key">class</span> <span class="c-class">SaasSystem</span> {
+  <span class="c-key">final</span> roles = [<span class="c-str">'admin'</span>, <span class="c-str">'staff'</span>, <span class="c-str">'user'</span>];
+  <span class="c-key">final</span> security = <span class="c-class">RLSPolicy</span>();
+
+  <span class="c-key">Future</span>&lt;<span class="c-class">void</span>&gt; <span class="c-fn">launch</span>() <span class="c-key">async</span> {
+    <span class="c-key">await</span> design();
+    <span class="c-key">await</span> build();
+    <span class="c-key">await</span> secure();
+    <span class="c-key">await</span> ship(); <span class="c-comment">// codeysaa.com</span>
+  }
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="cta">
+    <div class="container cta__inner reveal">
+      <h2>عندك فكرة نظام؟ لنحوّلها إلى منتج حقيقي.</h2>
+      <p>أرسل لنا تفاصيل مشروعك، ونرد عليك بخطة عمل ورؤية تقنية واضحة.</p>
+      <a href="#contact" class="btn btn--light">تواصل معنا الآن</a>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="section" id="contact">
+    <div class="container contact">
+      <div class="section__head reveal" style="text-align:center;max-width:640px;margin-inline:auto;">
+        <span class="eyebrow">تواصل معنا</span>
+        <h2>لنبدأ مشروعك القادم</h2>
+        <p>عبّئ النموذج وسنعاود التواصل معك في أقرب وقت.</p>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm">
+        <div class="contact-form__row">
+          <div class="field">
+            <label for="name">الاسم</label>
+            <input type="text" id="name" name="name" placeholder="اسمك الكامل" required>
+          </div>
+          <div class="field">
+            <label for="phone">رقم التواصل</label>
+            <input type="tel" id="phone" name="phone" placeholder="+967 ..." required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">البريد الإلكتروني</label>
+          <input type="email" id="email" name="email" placeholder="you@email.com">
+        </div>
+        <div class="field">
+          <label for="message">تفاصيل المشروع</label>
+          <textarea id="message" name="message" rows="5" placeholder="اكتب فكرتك أو مشكلة تريد حلّها..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary btn--block">
+          <span id="submitLabel">إرسال الطلب</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="contact-form__note" id="formNote"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a href="#top" class="brand">
+        <span class="brand__mark">
+          <svg viewBox="0 0 48 48" width="34" height="34" aria-hidden="true">
+            <circle cx="24" cy="24" r="21" fill="none" stroke="url(#g2)" stroke-width="4.5"/>
+            <path d="M31 16c-5-3-11-1-13 4s0 10 5 12" fill="none" stroke="url(#g2)" stroke-width="4.5" stroke-linecap="round"/>
+            <circle cx="36" cy="9" r="2.4" fill="#2f7dfa"/>
+            <defs>
+              <linearGradient id="g2" x1="0" y1="0" x2="48" y2="48">
+                <stop offset="0" stop-color="#5aa6ff"/>
+                <stop offset="1" stop-color="#1a4fb4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="brand__text">CODEY<sup>"</sup></span>
+      </a>
+      <p>Technology . Development . Consulting</p>
+      <p class="footer__ar">كودي للتطوير والاستشارة التقنية</p>
+    </div>
+
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h5>الشركة</h5>
+        <a href="#services">خدماتنا</a>
+        <a href="#work">أعمالنا</a>
+        <a href="#about">من نحن</a>
+      </div>
+      <div class="footer__col">
+        <h5>روابط</h5>
+        <a href="#process">آلية العمل</a>
+        <a href="#stack">التقنيات</a>
+        <a href="#contact">تواصل معنا</a>
+      </div>
+      <div class="footer__col">
+        <h5>تواصل</h5>
+        <a href="mailto:info@codeysaa.com">info@codeysaa.com</a>
+        <a href="https://codeysaa.com" target="_blank" rel="noopener">codeysaa.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <p>© <span id="year"></span> Codey. جميع الحقوق محفوظة.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="#contact" class="fab" id="fabCta" aria-label="ابدأ مشروعك">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</a>
+
+<script src="js/main.js"></script>
+</body>
+</html>
